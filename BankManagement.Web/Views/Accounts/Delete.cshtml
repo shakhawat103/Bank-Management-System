@@ -1,0 +1,83 @@
+﻿@model BankManagement.Application.DTOs.AccountDto
+
+@{
+    ViewData["Title"] = "Delete Account";
+}
+
+<div class="container mt-4">
+    <!-- Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index">Accounts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Delete</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">⚠️ Delete Account</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>Warning:</strong> This action cannot be undone!
+                    </div>
+
+                    <p class="lead">Are you sure you want to delete this account?</p>
+
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Account Details</h5>
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">Account Number:</dt>
+                                <dd class="col-sm-8">@Model.AccountNumber</dd>
+
+                                <dt class="col-sm-4">Account Holder:</dt>
+                                <dd class="col-sm-8">@Model.AccountHolderName</dd>
+
+                                <dt class="col-sm-4">Current Balance:</dt>
+                                <dd class="col-sm-8">
+                                    <span class="@(Model.Balance >= 0 ? "text-success" : "text-danger")">
+                                        $@Model.Balance.ToString("N2")
+                                    </span>
+                                </dd>
+
+                                <dt class="col-sm-4">Account Type:</dt>
+                                <dd class="col-sm-8">@Model.AccountType</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    @if (Model.Balance != 0)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-info-circle"></i>
+                            <strong>Notice:</strong> This account has a balance of
+                            <strong>$@Model.Balance.ToString("N2")</strong>.
+                            Please withdraw or transfer the balance before deleting.
+                        </div>
+                    }
+
+                    <!-- ✅ CORRECT DELETE FORM -->
+                    <form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post">
+                        @Html.AntiForgeryToken()  <!-- ✅ Required for security -->
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-danger"
+                                    @(Model.Balance != 0 ? "disabled" : "")>
+                                <i class="bi bi-trash"></i>
+                                @(Model.Balance != 0 ? "Cannot Delete (Has Balance)" : "Delete Account")
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

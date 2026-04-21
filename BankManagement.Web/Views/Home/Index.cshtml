@@ -1,0 +1,222 @@
+﻿@{
+    ViewData["Title"] = "SecureBank - Banking Management System";
+	// Layout = "_FullWidthLayout"; ✅ Tells MVC to use the full-width layout Forces the view to use the _FullWidthLayout.cshtml instead of the default _Layout.cshtml
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-white text-center position-relative overflow-hidden">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative py-5 my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3 fs-6 rounded-pill">
+                    🏦 Enterprise Banking Platform
+                </span>
+                <h1 class="display-3 fw-bold mb-3">Welcome to <span class="text-warning">SecureBank</span></h1>
+                <p class="lead mb-4 opacity-90">
+                    Streamline your banking operations with our intuitive management system.
+                    Handle accounts, transactions, and customer data securely and efficiently.
+                </p>
+
+                <!-- Admin Access Button -->
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
+                    <a asp-controller="Accounts" asp-action="Index" class="btn btn-warning btn-lg px-5 py-3 fw-bold shadow-lg hover-lift">
+                        <i class="bi bi-shield-lock-fill me-2"></i> Admin Dashboard
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg px-5 py-3 hover-lift">
+                        <i class="bi bi-arrow-down-circle me-2"></i> Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Shapes -->
+    <div class="hero-shape hero-shape-1"></div>
+    <div class="hero-shape hero-shape-2"></div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Platform Features</h2>
+            <p class="text-muted">Everything you need to manage banking operations efficiently</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-shadow">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-primary bg-opacity-10 text-primary rounded-circle mx-auto mb-3">
+                            <i class="bi bi-people-fill fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Account Management</h5>
+                        <p class="card-text text-muted mb-0">
+                            Create, view, update, and deactivate customer accounts with complete audit trails.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-shadow">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-success bg-opacity-10 text-success rounded-circle mx-auto mb-3">
+                            <i class="bi bi-cash-stack fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Transaction Processing</h5>
+                        <p class="card-text text-muted mb-0">
+                            Handle deposits, withdrawals, and transfers with real-time balance updates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-shadow">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle mx-auto mb-3">
+                            <i class="bi bi-shield-check fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Secure & Reliable</h5>
+                        <p class="card-text text-muted mb-0">
+                            Built with industry-standard security practices and layered architecture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats Section -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-3">
+                <div class="p-3">
+                    <h2 class="display-5 fw-bold text-primary">99.9%</h2>
+                    <p class="text-muted mb-0">System Uptime</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <h2 class="display-5 fw-bold text-primary">24/7</h2>
+                    <p class="text-muted mb-0">Support Available</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <h2 class="display-5 fw-bold text-primary">SSL</h2>
+                    <p class="text-muted mb-0">Encrypted Data</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="p-3">
+                    <h2 class="display-5 fw-bold text-primary">API</h2>
+                    <p class="text-muted mb-0">First Architecture</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">&copy; @DateTime.Now.Year SecureBank Management System. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <small class="text-white-50">Built with ASP.NET Core 8.0 | Layered Architecture</small>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        pointer-events: none;
+    }
+
+    .hero-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+    }
+
+    .hero-shape-1 {
+        width: 400px;
+        height: 400px;
+        background: #ffb703;
+        top: -100px;
+        right: -100px;
+    }
+
+    .hero-shape-2 {
+        width: 300px;
+        height: 300px;
+        background: #00b4d8;
+        bottom: -50px;
+        left: -50px;
+    }
+
+    /* Hover Effects */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    }
+
+    .hover-shadow {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Icon Boxes */
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Adjustments */
+    @@media (max-width: 768px) {
+        .hero-section {
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+        .display-3 {
+            font-size: 2.5rem;
+        }
+        .hero-shape {
+            display: none;
+        }
+    }
+</style>

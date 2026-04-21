@@ -1,0 +1,74 @@
+﻿@model BankManagement.Application.DTOs.UpdateAccountDto
+
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
+<div class="container mt-4">
+    <!-- Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index">Accounts</a></li>
+            <li class="breadcrumb-item"><a asp-action="Details" asp-route-id="@ViewData["AccountId"]">Details</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">✏️ Edit Account</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="AccountHolderName" class="form-label">
+                                Account Holder Name <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="AccountHolderName" class="form-control" required />
+                            <span asp-validation-for="AccountHolderName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Balance" class="form-label">Current Balance</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="Balance" class="form-control"
+                                       type="number" step="0.01" readonly />
+                            </div>
+                            <div class="form-text">Balance cannot be edited directly. Use Deposit/Withdraw.</div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label">
+                                Account is Active
+                            </label>
+                            <span asp-validation-for="IsActive" class="text-danger d-block"></span>
+                            <div class="form-text">Uncheck to deactivate the account</div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Details" asp-route-id="@ViewData["AccountId"]"
+                               class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-warning">
+                                <i class="bi bi-check-circle"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
